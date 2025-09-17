@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cricketer Search</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #result { border: 1px solid #ccc; padding: 15px; margin-top: 15px; width: 400px; }
+  </style>
+</head>
+<body>
+  <h2>Search Cricketer Details</h2>
+  <input type="text" id="searchInput" placeholder="Enter player name...">
+  <button onclick="searchPlayer()">Search</button>
+
+  <div id="result"></div>
+
+  <script>
+    // Sample static cricket player data
+    const players = [
+      {
+        name: "Virat Kohli",
+        country: "India",
+        age: 36,
+        role: "Batsman",
+        battingStats: { matches: 265, runs: 12350, highScore: 183 },
+        bowlingStats: { wickets: 4, bestBowling: "1/15" }
+      },
+      {
+        name: "Kane Williamson",
+        country: "New Zealand",
+        age: 35,
+        role: "Batsman",
+        battingStats: { matches: 156, runs: 9500, highScore: 251 },
+        bowlingStats: { wickets: 5, bestBowling: "1/19" }
+      },
+      {
+        name: "Pat Cummins",
+        country: "Australia",
+        age: 32,
+        role: "Bowler",
+        battingStats: { matches: 90, runs: 930, highScore: 63 },
+        bowlingStats: { wickets: 275, bestBowling: "6/27" }
+      }
+    ];
+
+    function searchPlayer() {
+      const input = document.getElementById('searchInput').value.trim().toLowerCase();
+      const resultDiv = document.getElementById('result');
+      const player = players.find(p => p.name.toLowerCase() === input);
+
+      if (player) {
+        resultDiv.innerHTML = `
+          <h3>${player.name}</h3>
+          <p><strong>Country:</strong> ${player.country}</p>
+          <p><strong>Age:</strong> ${player.age}</p>
+          <p><strong>Role:</strong> ${player.role}</p>
+          <h4>Batting Stats</h4>
+          <ul>
+            <li>Matches: ${player.battingStats.matches}</li>
+            <li>Runs: ${player.battingStats.runs}</li>
+            <li>Highest Score: ${player.battingStats.highScore}</li>
+          </ul>
+          <h4>Bowling Stats</h4>
+          <ul>
+            <li>Wickets: ${player.bowlingStats.wickets}</li>
+            <li>Best Bowling Figures: ${player.bowlingStats.bestBowling}</li>
+          </ul>
+        `;
+      } else {
+        resultDiv.innerHTML = "<p>Player not found. Please try another name.</p>";
+      }
+    }
+  </script>
+</body>
+</html>
