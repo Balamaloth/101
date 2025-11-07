@@ -6,6 +6,7 @@
   Collect user information with validations and a modern animated UI 💫
 </p>
 
+
 ---
 
 ## 🎬 Demo Preview  
